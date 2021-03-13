@@ -1,21 +1,27 @@
+import React from 'react';
 import s from './style.module.css';
 
-const LayoutBlock = (props) => {
+const LayoutBlock = ({ title, descr, urlBg = null, colorBg = false }) => {
+    
+    const bg = {
+        backgroundImage: `url(${urlBg})`,
+        backgroundColor: colorBg,
+    }
     return (
-        <section class="root">
-            <div class="wrapper">
+        <section className={s.root} style={bg}>
+            <div className={s.wrapper}>
                 <article>
-                    <div class="title">
-                        <h3><-- ЗДЕСЬ props.title --></h3>
-                        <span class="separator"></span>
+                    <div className={s.title}>
+                        <h3>{title}</h3>
+                        <span className={s.separator}></span>
                     </div>
-                    <div class="desc full">
-                        <p><-- ЗДЕСЬ props.desc --></p>
-                    </div>
-                </article>
-            </div>
-        </section>
-    )
+                    <div className={[s.desc, s.full].join(' ')} >
+                    <p> {descr} </p>
+                </div>
+            </article>
+        </div>
+    </section >
+)
 }
 
 export default LayoutBlock;
